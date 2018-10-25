@@ -279,7 +279,7 @@ void Piece::rotateCW()
 //In this case i used 1-4 to represent the cardinal directions. (1 = up / 2 = left / 3 = down / 4 = right)
 //I apologize for the messy switches.
 
-//int deflect(Laser laser, Piece p1)
+//void deflect(Laser& laser, Piece p1)
 //{
 	//if (p1.hasMirror)
 	//{
@@ -291,7 +291,7 @@ void Piece::rotateCW()
 	//		{//first checks that it can recieve the laser
 	//			if (p1.left)//sets the laser's direction depending on resultant mirror
 	//			{
-	//				laser.angle = 2;
+	//				laser.angle = 2;  //
 	//			}
 	//			else if (p1.right)
 	//			{
