@@ -1,39 +1,31 @@
 #include "Pieces.h"
 
+#include "ConsoleManager.h"
+
+#include <io.h>
+#include <fcntl.h>
+
+#include <sstream>
+#include <fstream>
+#include <codecvt>
+
 // Mostly Function definitions
 
 void Piece::initScarab(int team, int angle)
 {
+	_setmode(_fileno(stdout), _O_U16TEXT);
+
 	this->player = team;
 
 	this->hasMirror = true;
 	this->angle = angle;
-
 
 	this->up = true;
 	this->down = true;
 	this->left = true;
 	this->right = true;
 
-
-
-	this->Orient1 = "\\··";
-	this->Orient1 += "·\\·";
-	this->Orient1 += "··\\";
-
-	this->Orient2 = "··/";
-	this->Orient2 += "·/·";
-	this->Orient2 += "/··";
-
-	this->Orient3 = "\\··";
-	this->Orient3 += "·\\·";
-	this->Orient3 += "··\\";
-
-	this->Orient4 = "··/";
-	this->Orient4 += "·/·";
-	this->Orient4 += "/··";
-
-
+	this->loadPieceData("scarab");
 }
 
 void Piece::initPyramid(int team, int angle)
@@ -74,21 +66,7 @@ void Piece::initPyramid(int team, int angle)
 		 
 	}
 
-	this->Orient1 = "\\··";
-	this->Orient1 += "#\\·";
-	this->Orient1 += "##\\";
-//	
-	this->Orient2 = "··/";
-	this->Orient2 += "·/#";
-	this->Orient2 += "/##";
-//	
-	this->Orient3 = "\\##";
-	this->Orient3 += "·\\#";
-	this->Orient3 += "··\\";
-//	
-	this->Orient4 = "##/";
-	this->Orient4 += "#/·";
-	this->Orient4 += "/··";
+	this->loadPieceData("pyramid");
 
 }
 
@@ -130,21 +108,7 @@ void Piece::initAnubis(int team, int angle)
 
 	}
 
-	this->Orient1 = "---";
-	this->Orient1 += "###";
-	this->Orient1 += "###";
-	//	
-	this->Orient2 = "|##";
-	this->Orient2 += "|##";
-	this->Orient2 += "|##";		 
-	//	
-	this->Orient3 = "###";
-	this->Orient3 += "###";
-	this->Orient3 += "---";
-	//	
-	this->Orient4 = "##|";
-	this->Orient4 += "##|";
-	this->Orient4 += "##|";
+	this->loadPieceData("anubis.txt");
 
 }
 
@@ -187,21 +151,7 @@ void Piece::initSphinx(int team, int angle)
 	}
 
 
-	this->Orient1 = "·A·";
-	this->Orient1 += "#0#";
-	this->Orient1 += "###";
-	//	
-	this->Orient2 = "·##";
-	this->Orient2 += "<0#";
-	this->Orient2 += "·##";
-	//	
-	this->Orient3 = "###";
-	this->Orient3 += "#0#";
-	this->Orient3 += "·V·";
-	//	
-	this->Orient4 = "##·";
-	this->Orient4 += "#0>";
-	this->Orient4 += "##·";
+	this->loadPieceData("sphinx");
 }
 
 void Piece::initPharoah(int team, int angle = 1)
@@ -215,9 +165,9 @@ void Piece::initPharoah(int team, int angle = 1)
 	this->left = false;
 	this->right = false;
 
-	this->Orient1 = "/-\\";
-	this->Orient1 += "-+-";
-	this->Orient1 += "\\-/";
+	this->Orient1 = L"/-\\";
+	this->Orient1 += L"-+-";
+	this->Orient1 += L"\\-/";
 	//	
 
 }
@@ -237,7 +187,7 @@ void Piece::rotateCCW()
 		//redraw the piece with Orient 1
 		break;
 	case 2:
-		//redaw the piece with Orient 2
+		//redraw the piece with Orient 2
 		break;
 	case 3:
 		//redraw the piece with Orient 3
@@ -274,12 +224,37 @@ void Piece::rotateCW()
 	}
 }
 
+void Piece::loadPieceData(std::string title) {
+	std::wstring temp = readFile(title);
+	for (int i = 0, count = 0; i < temp.size(); i++) {
+		if (temp[i] == '\n') {
+			count++;
+			continue;
+		}
+		switch (count) {
+			case 0:
+				this->Orient1 += temp[i];
+				break;
+			case 1:
+				this->Orient2 += temp[i];
+				break;
+			case 2:
+				this->Orient3 += temp[i];
+				break;
+			case 3:
+				this->Orient4 += temp[i];
+				break;
+		}
+	}
+}
+
+
 
 //Needs a laser class//obj//struct that has a variable that represents it's direct.
 //In this case i used 1-4 to represent the cardinal directions. (1 = up / 2 = left / 3 = down / 4 = right)
 //I apologize for the messy switches.
 
-//void deflect(Laser& laser, Piece p1)
+//int deflect(Laser laser, Piece p1)
 //{
 	//if (p1.hasMirror)
 	//{
@@ -291,7 +266,7 @@ void Piece::rotateCW()
 	//		{//first checks that it can recieve the laser
 	//			if (p1.left)//sets the laser's direction depending on resultant mirror
 	//			{
-	//				laser.angle = 2;  //
+	//				laser.angle = 2;
 	//			}
 	//			else if (p1.right)
 	//			{

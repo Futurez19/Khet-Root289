@@ -3,26 +3,24 @@
 #include <iostream>
 #include <string>
 
-
-
-
-
 //int deflect(laser,piece);
-
 
 // Scarab Object
 class Piece {
 public:
+
 	// Initializes base statistics for pieces.
 	void initScarab(int, int);
 	void initPyramid(int, int);
-	void initAnubis( int, int);
-	void initSphinx( int, int);
-	void initPharoah( int, int);
+	void initAnubis(int, int);
+	void initSphinx(int, int);
+	void initPharoah(int, int);
 
 	//Piece interactions.
 	void rotateCCW();
 	void rotateCW();
+
+	void loadPieceData(std::string);
 
 	int player; //Which player does this piece belong to? Should be declared upon piece declaration.
 	
@@ -46,23 +44,14 @@ public:
 	bool right = false;
 
 	int angle; //A int signifying the angle of the mirror , 1 = orient1 , 2 = orient2 etc..
-
-
-	// How the pieces are drawn line by line. includes orientations
-
-	std::string Orient1;
-
-
-	std::string Orient2;
-
-
-	std::string Orient3;
-
-
-	std::string Orient4;
-
-
-
+	
+    // How the pieces are drawn line by line. includes orientations
+	std::wstring Orient1;
+	std::wstring Orient2;
+	std::wstring Orient3;
+	std::wstring Orient4;
+	
 private:
+	
 };
 
