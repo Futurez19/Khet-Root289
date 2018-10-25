@@ -1,9 +1,5 @@
 #pragma once
 
-#include <string>
-
-#include <Windows.h>
-
 extern int initConsole(short, short);
 
 extern int setConsoleWindowSize(short, short);
@@ -17,6 +13,8 @@ extern void setCursorPos(short, short);
 extern void setConsoleColour(short);
 
 extern void cls();
+
+std::wstring readFile(std::string);
 
 namespace Colour {
 	enum : unsigned short {

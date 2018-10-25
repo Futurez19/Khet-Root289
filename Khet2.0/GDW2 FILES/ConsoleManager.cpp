@@ -2,6 +2,10 @@
 #include <string>
 #include <Windows.h>
 
+#include <sstream>
+#include <fstream>
+#include <codecvt>
+
 #include "ConsoleManager.h"
 
 HANDLE hConsole;
@@ -95,4 +99,14 @@ void cls()
 
     // Move the cursor back to the top left for the next sequence of writes
     SetConsoleCursorPosition(hOut, topLeft);
+}
+
+// CREDIT: https://stackoverflow.com/questions/4775437/read-unicode-utf-8-file-into-wstring
+std::wstring readFile(std::string title) {
+	std::string fileName = "res\\" + title + ".txt";
+	std::wifstream wif(fileName.c_str());
+    wif.imbue(std::locale(std::locale::empty(), new std::codecvt_utf8<wchar_t>));
+    std::wstringstream wss;
+    wss << wif.rdbuf();
+    return wss.str();
 }
