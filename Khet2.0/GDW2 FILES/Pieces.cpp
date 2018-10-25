@@ -108,7 +108,7 @@ void Piece::initAnubis(int team, int angle)
 
 	}
 
-	this->loadPieceData("anubis.txt");
+	this->loadPieceData("anubis");
 
 }
 
@@ -154,11 +154,11 @@ void Piece::initSphinx(int team, int angle)
 	this->loadPieceData("sphinx");
 }
 
-void Piece::initPharoah(int team, int angle = 1)
+void Piece::initPharoah(int team)
 {
 	this->player = team;
 	this->hasMirror = false;
-	this->angle = angle;
+	this->angle = 1;
 
 	this->up = false;
 	this->down = false;

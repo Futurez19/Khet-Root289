@@ -14,7 +14,7 @@ public:
 	void initPyramid(int, int);
 	void initAnubis(int, int);
 	void initSphinx(int, int);
-	void initPharoah(int, int);
+	void initPharoah(int);
 
 	//Piece interactions.
 	void rotateCCW();
