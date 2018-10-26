@@ -8,7 +8,6 @@
 // Scarab Object
 class Piece {
 public:
-
 	// Initializes base statistics for pieces.
 	void initScarab(int, int);
 	void initPyramid(int, int);
