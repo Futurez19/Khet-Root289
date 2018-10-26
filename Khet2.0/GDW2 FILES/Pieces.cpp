@@ -13,7 +13,6 @@
 
 void Piece::initScarab(int team, int angle)
 {
-	_setmode(_fileno(stdout), _O_U16TEXT);
 
 	this->player = team;
 
