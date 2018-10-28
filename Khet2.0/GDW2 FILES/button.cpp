@@ -12,7 +12,7 @@ Button::Button(int x, int y, std::string text) {
 }
 
 void Button::drawButton() {
-	if (!isPressed()) {
+	if (!isOver()) {
 		setCursorPos(this->x - 1, this->y);
 		std::wcout << L" " << text.c_str() << L" ";
 	}
@@ -22,8 +22,12 @@ void Button::drawButton() {
 	}
 }
 
+bool Button::isOver() {
+	return this->y == getMouseY() / 16 && 
+		getMouseX() / 8 > this->x && 
+		getMouseX() / 8 < this->x + text.length();
+}
+
 bool Button::isPressed() {
-	if (this->y == getMouseY() / 16 && getMouseX() / 8 > this->x && getMouseX() / 8 < this->x + text.length())
-		return true;
-	else return false;
+	return isOver() && isButton(Events::Mouse_Left);
 }

@@ -9,6 +9,8 @@ public:
 
 	void drawButton();
 
+	bool isOver();
+
 	bool isPressed();
 
 	int getX() { return x; }
