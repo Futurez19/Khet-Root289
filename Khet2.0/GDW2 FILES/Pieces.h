@@ -45,7 +45,7 @@ public:
 	int angle; //A int signifying the angle of the mirror , 1 = orient1 , 2 = orient2 etc..
 	
     // How the pieces are drawn line by line. includes orientations
-	std::wstring Orient1;
+	std::wstring Orient1;	//
 	std::wstring Orient2;
 	std::wstring Orient3;
 	std::wstring Orient4;
