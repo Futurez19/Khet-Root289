@@ -13,7 +13,7 @@
 
 void Piece::initScarab(int team, int angle)
 {
-
+	this->isScarab = true;
 	this->player = team;
 
 	this->hasMirror = true;
@@ -29,7 +29,7 @@ void Piece::initScarab(int team, int angle)
 
 void Piece::initPyramid(int team, int angle)
 {
-
+	this->isPyramid = true;
 	this->player = team;
 	this->hasMirror = true;
 	this->angle = angle;
@@ -71,7 +71,7 @@ void Piece::initPyramid(int team, int angle)
 
 void Piece::initAnubis(int team, int angle)
 {
-
+	this->isAnubis = true;
 	this->player = team;
 	this->hasMirror = true; // it doesnt actually have a mirror
 	this->angle = angle;
@@ -113,6 +113,7 @@ void Piece::initAnubis(int team, int angle)
 
 void Piece::initSphinx(int team, int angle)
 {
+	this->isSphinx = true;
 	this->player = team;
 	this->hasMirror = false;
 	this->hasLaser = true;
@@ -155,6 +156,7 @@ void Piece::initSphinx(int team, int angle)
 
 void Piece::initPharoah(int team)
 {
+	this->isPharoah = true;
 	this->player = team;
 	this->hasMirror = false;
 	this->angle = 1;
@@ -292,7 +294,7 @@ void Piece::loadPieceData(std::string title) {
 	//			{
 	//				laser.angle = 3;
 	//			}
-	//			else if (p1.isAnubis)
+	//			else if (p1.isAnubis || p1.isSphinx)
 	//				stop();//stop the laser
 	//			else
 	//				// piece dies
