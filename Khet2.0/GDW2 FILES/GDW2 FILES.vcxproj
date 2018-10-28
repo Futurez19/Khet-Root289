@@ -125,6 +125,7 @@
     <ClCompile Include="ConsoleManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Laser.cpp" />
+    <ClCompile Include="Logic.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pieces.cpp" />
   </ItemGroup>
