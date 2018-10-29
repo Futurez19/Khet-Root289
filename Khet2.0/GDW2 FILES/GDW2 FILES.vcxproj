@@ -129,6 +129,7 @@
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="Logic.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Movement.cpp" />
     <ClCompile Include="Pieces.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
