@@ -116,12 +116,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="button.h" />
     <ClInclude Include="ConsoleManager.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Laser.h" />
     <ClInclude Include="Pieces.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="button.cpp" />
     <ClCompile Include="ConsoleManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Laser.cpp" />
