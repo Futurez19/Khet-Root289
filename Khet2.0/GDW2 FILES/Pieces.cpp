@@ -15,6 +15,7 @@ using namespace Events;
 
 void Piece::initScarab(int team, int angle)
 {
+	this->destroyed = false;
 	this->isScarab = true;
 	this->player = team;
 
@@ -31,6 +32,7 @@ void Piece::initScarab(int team, int angle)
 
 void Piece::initPyramid(int team, int angle)
 {
+	this->destroyed = false;
 	this->isPyramid = true;
 	this->player = team;
 	this->hasMirror = true;
@@ -73,6 +75,7 @@ void Piece::initPyramid(int team, int angle)
 
 void Piece::initAnubis(int team, int angle)
 {
+	this->destroyed = false;
 	this->isAnubis = true;
 	this->player = team;
 	this->hasMirror = true; // it doesnt actually have a mirror
@@ -84,7 +87,7 @@ void Piece::initAnubis(int team, int angle)
 		this->up = true;
 		this->down = false;
 		this->left = false;
-		this->right = true;
+		this->right = false;
 		break;
 	case 2:
 		this->up = false;
@@ -115,6 +118,7 @@ void Piece::initAnubis(int team, int angle)
 
 void Piece::initSphinx(int team, int angle)
 {
+	this->destroyed = false;
 	this->isSphinx = true;
 	this->player = team;
 	this->hasMirror = false;
@@ -158,6 +162,7 @@ void Piece::initSphinx(int team, int angle)
 
 void Piece::initPharoah(int team)
 {
+	this->destroyed = false;
 	this->isPharoah = true;
 	this->player = team;
 	this->hasMirror = false;
