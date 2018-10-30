@@ -13,6 +13,11 @@ bool Laser::nextOccupied(int id)
 
 void Laser::deflected(int &direction, Piece& p1)
 {
+	if (p1.isPharoah) {
+		p1.destroyed = true;
+		return;
+	}
+
 	if (p1.hasMirror)
 	{
 		switch (direction)//dependant on incoming laser
@@ -151,7 +156,7 @@ void Laser::deflected(int &direction, Piece& p1)
 
 
 
-void Laser::fireLaser(Piece sphinx, int board[8][10], std::vector<Piece> pieceList)
+void Laser::fireLaser(Piece sphinx, int board[8][10], std::vector<Piece> &pieceList)
 {
 	this->dir = sphinx.angle;
 	this->teamLaser = sphinx.player;

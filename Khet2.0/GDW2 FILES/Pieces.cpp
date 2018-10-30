@@ -9,6 +9,8 @@
 #include <fstream>
 #include <codecvt>
 
+using namespace Events;
+
 // Mostly Function definitions
 
 void Piece::initScarab(int team, int angle)
@@ -242,6 +244,7 @@ void Piece::rotateCW()
 		this->initSphinx(this->player, this->angle);
 }
 
+
 void Piece::loadPieceData(std::string title) {
 	std::wstring temp = readFile(title);
 	for (int i = 0, count = 0; i < temp.size(); i++) {
@@ -265,6 +268,7 @@ void Piece::loadPieceData(std::string title) {
 		}
 	}
 }
+
 
 
 
