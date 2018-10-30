@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 #include "Laser.h"
 #include "Pieces.h"
@@ -7,15 +8,6 @@
 
 bool Laser::nextOccupied(int id)
 {
-	//bool interaction = false;
-
-	//if (!((board[x + y * 10] - 1) % 13 == 0)) // if the board square is not empty(0)
-	//{
-	//	interaction = true;
-	//}
-	//else
-	//	interaction = false;
-
 	return (!(id) % 13 == 0);
 }
 
@@ -174,8 +166,12 @@ void Laser::fireLaser(Piece sphinx, int board[8][10], std::vector<Piece> pieceLi
 	bool isFiring = true;
 	
 	int newX = startX, newY = startY;
+	int oldX = newX, oldY = newY;
 
 	while (inBounds && isFiring) {
+
+		oldX = newX;
+		oldY = newY;
 
 		if (this->dir % 2 == 0) {
 			newX += this->dir == 2 ? -1 : 1;
@@ -200,8 +196,20 @@ void Laser::fireLaser(Piece sphinx, int board[8][10], std::vector<Piece> pieceLi
 				isFiring = false;
 		}
 
-		setCursorPos(newX * 8 + 4, newY * 4 + 3);
-		std::wcout << L"-";
+		if (newX != oldX) {
+			for (int i = 0; abs((float)i) < abs((float)(newX - oldX) * 8); i += newX - oldX) {
+				setCursorPos(oldX * 8 + 4 + i, oldY * 4 + 3);
+				std::wcout << L"-";
+			}
+		}
+		else {
+			for (int i = 0; abs((float)i) < abs((float)(newY - oldY) * 4); i += newY - oldY) {
+				setCursorPos(newX * 8 + 4, oldY * 4 + 3 + i);
+				std::wcout << L"|";
+			}
+		}
+		//setCursorPos(newX * 8 + 4, newY * 4 + 3);
+		//std::wcout << L"-";
 
 	}
 }
