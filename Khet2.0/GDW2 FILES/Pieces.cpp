@@ -166,10 +166,7 @@ void Piece::initPharoah(int team)
 	this->left = false;
 	this->right = false;
 
-	this->Orient1 = L"/-\\";
-	this->Orient1 += L"-+-";
-	this->Orient1 += L"\\-/";
-	//	
+	this->loadPieceData("pharoah");
 
 }
 
