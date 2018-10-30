@@ -1,2 +1,3 @@
 ﻿  main.cpp
-  GDW2 FILES.vcxproj -> C:\Users\100706824\Documents\GitHubKraken\Khet-Root289\Khet2.0\x64\Debug\Game Files.exe
+Movement.obj : error LNK2005: main already defined in main.obj
+C:\Users\100706824\Documents\GitHubKraken\Khet-Root289\Khet2.0\x64\Debug\Game Files.exe : fatal error LNK1169: one or more multiply defined symbols found

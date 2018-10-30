@@ -8,12 +8,12 @@ void movePiece(Piece);
 
 Piece piece;
 
-int main()
-{
-	selectPiece();
-	movePiece(piece);
-	return 0;
-}
+//int main()
+//{
+//	selectPiece();
+//	movePiece(piece);
+//	return 0;
+//}
 
 Piece selectPiece()
 {
