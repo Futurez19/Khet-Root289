@@ -8,8 +8,8 @@ class Laser
 {
 public:
 
-	void fireLaser(Piece,int*,std::vector<Piece>);
-	bool nextOccupied(int,int,int*);
+	void fireLaser(Piece,int[8][10],std::vector<Piece>);
+	bool nextOccupied(int);
 	void deflected(int&,Piece&);
 
 	int dir;   // laser direction, 1-4 : 1 = up, 2 = Left, 3 = Down, 4 = Right.

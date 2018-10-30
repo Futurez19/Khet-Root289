@@ -179,21 +179,31 @@ void Piece::rotateCCW()
 	else
 		this->angle = 1;
 
-	switch (this->angle)  // may not even need this but just incase
-	{
-	case 1:
-		//redraw the piece with Orient 1
-		break;
-	case 2:
-		//redraw the piece with Orient 2
-		break;
-	case 3:
-		//redraw the piece with Orient 3
-		break;
-	case 4:
-		//redraw the piece with Orient 4
-		break;
-	}
+	//switch (this->angle)  // may not even need this but just incase
+	//{
+	//case 1:
+	//	//redraw the piece with Orient 1
+	//	break;
+	//case 2:
+	//	//redraw the piece with Orient 2
+	//	break;
+	//case 3:
+	//	//redraw the piece with Orient 3
+	//	break;
+	//case 4:
+	//	//redraw the piece with Orient 4
+	//	break;
+	//}
+	if (this->isPyramid)
+		this->initPyramid(this->player, this->angle);
+	else if (this->isScarab)
+		this->initScarab(this->player, this->angle);
+	else if (this->isAnubis)
+		this->initAnubis(this->player, this->angle);
+	else if (this->isPharoah)
+		this->initPharoah(this->player);
+	else if (this->isSphinx)
+		this->initSphinx(this->player, this->angle);
 }
 
 void Piece::rotateCW()
@@ -205,21 +215,31 @@ void Piece::rotateCW()
 	else
 		this->angle = 4;
 
-	switch (this->angle)
-	{
-	case 1:
-		//redraw the piece with Orient 1
-		break;
-	case 2:
-		//redaw the piece with Orient 2
-		break;
-	case 3:
-		//redraw the piece with Orient 3
-		break;
-	case 4:
-		//redraw the piece with Orient 4
-		break;
-	}
+	//switch (this->angle)
+	//{
+	//case 1:
+	//	//redraw the piece with Orient 1
+	//	break;
+	//case 2:
+	//	//redaw the piece with Orient 2
+	//	break;
+	//case 3:
+	//	//redraw the piece with Orient 3
+	//	break;
+	//case 4:
+	//	//redraw the piece with Orient 4
+	//	break;
+	//}
+	if (this->isPyramid)
+		this->initPyramid(this->player, this->angle);
+	else if (this->isScarab)
+		this->initScarab(this->player, this->angle);
+	else if (this->isAnubis)
+		this->initAnubis(this->player, this->angle);
+	else if (this->isPharoah)
+		this->initPharoah(this->player);
+	else if (this->isSphinx)
+		this->initSphinx(this->player, this->angle);
 }
 
 void Piece::loadPieceData(std::string title) {

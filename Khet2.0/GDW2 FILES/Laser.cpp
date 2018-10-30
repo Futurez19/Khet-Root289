@@ -5,18 +5,18 @@
 #include "Pieces.h"
 #include "ConsoleManager.h"
 
-bool Laser::nextOccupied(int x,int y,int* board)
+bool Laser::nextOccupied(int id)
 {
-	bool interaction = false;
+	//bool interaction = false;
 
-	//if (!((*board[x][y] - 1) % 13 == 0)) // if the board square is not empty(0)
+	//if (!((board[x + y * 10] - 1) % 13 == 0)) // if the board square is not empty(0)
 	//{
 	//	interaction = true;
 	//}
 	//else
 	//	interaction = false;
 
-	return interaction;
+	return (!(id) % 13 == 0);
 }
 
 void Laser::deflected(int &direction, Piece& p1)
@@ -26,7 +26,15 @@ void Laser::deflected(int &direction, Piece& p1)
 		switch (direction)//dependant on incoming laser
 		{
 		case 1:		  //laser is going up;
-
+			if (p1.isScarab) {
+				if (p1.angle % 2 == 0) {
+					direction = 4;
+				}
+				else {
+					direction = 2;
+				}
+				break;
+			}
 			if (p1.down)
 			{//first checks that it can recieve the laser
 				if (p1.left)//sets the laser's direction depending on resultant mirror
@@ -47,9 +55,18 @@ void Laser::deflected(int &direction, Piece& p1)
 				p1.destroyed = true;
 				break;
 			}
+			break;
 
 		case 2:		 // laser going left
-
+			if (p1.isScarab) {
+				if (p1.angle % 2 == 0) {
+					direction = 1;
+				}
+				else {
+					direction = 3;
+				}
+				break;
+			}
 			if (p1.right)
 			{//first checks that it can recieve the laser
 				if (p1.up)//sets the laser's direction depending on resultant mirror
@@ -70,7 +87,17 @@ void Laser::deflected(int &direction, Piece& p1)
 				p1.destroyed = true;
 				break;
 			}
+			break;
 		case 3:		 // laser going down
+			if (p1.isScarab) {
+				if (p1.angle % 2 == 0) {
+					direction = 2;
+				}
+				else {
+					direction = 4;
+				}
+				break;
+			}
 			if (p1.up)
 			{//first checks that it can recieve the laser
 				if (p1.left)//sets the laser's direction depending on resultant mirror
@@ -91,8 +118,17 @@ void Laser::deflected(int &direction, Piece& p1)
 				p1.destroyed = true;
 				break;
 			}
-
+			break;
 		case 4:		  //laser going right
+			if (p1.isScarab) {
+				if (p1.angle % 2 == 0) {
+					direction = 1;
+				}
+				else {
+					direction = 3;
+				}
+				break;
+			}
 			if (p1.left)
 			{//first checks that it can recieve the laser
 				if (p1.up)//sets the laser's direction depending on resultant mirror
@@ -113,6 +149,7 @@ void Laser::deflected(int &direction, Piece& p1)
 				p1.destroyed = true;
 				break;
 			}
+			break;
 		}
 	}
 	else
@@ -122,71 +159,50 @@ void Laser::deflected(int &direction, Piece& p1)
 
 
 
-inline void Laser::fireLaser(Piece sphinx,int* board,std::vector<Piece>pieceList)
+void Laser::fireLaser(Piece sphinx, int board[8][10], std::vector<Piece> pieceList)
 {
 	this->dir = sphinx.angle;
 	this->teamLaser = sphinx.player;
 
+	//int incrementX = 7;	// Im supposed to be incrementing this 1 by to print the laser in the line,
+	//int incrementY = 4;
 
-	int incrementX = 7;	// Im supposed to be incrementing this 1 by to print the laser in the line,
-	int incrementY = 4;
+	int startX = this->teamLaser == 0 ? 0 : 9;
+	int startY = this->teamLaser == 0 ? 0 : 7;
 
 	bool inBounds = true;
 	bool isFiring = true;
 	
-	
-		switch (dir)
-		{
-		case 1:
-			this->posX = 9 * 8 + incrementX; // sets the starting point of the laser,
-			this->posY = 7 * 4 + incrementY;
+	int newX = startX, newY = startY;
 
+	while (inBounds && isFiring) {
 
-				if (nextOccupied(this->posX, this->posY, board)) // Is there a piece that I'm interacting with?
-				{
-
-					//Sorry Myles, i need some help figuring out which piece im getting.
-					//What this should do:
-					//if the next spot the laser should print to is in encroaching on a occupied square
-					//We need to get the piece on that square and pass it to the deflected function 
-
-					/*if ((board[newMouseY][newMouseX] - 1) % 13 == 0)
-						std::wcout << "Sphinx";
-					else if ((board[newMouseY][newMouseX] - 1) % 13 < 8)
-						std::wcout << "Pyramid";
-					else if ((board[newMouseY][newMouseX] - 1) % 13 < 10)
-						std::wcout << "Scarab";
-					else if ((board[newMouseY][newMouseX] - 1) % 13 < 12)
-						std::wcout << "Anubis";
-					else if ((board[newMouseY][newMouseX] - 1) % 13 < 14)
-						std::wcout << "Pharoah";*/
-
-					
-
-
-					//deflected(this->dir, pieceList.at(piece));
-				}
-				else// if empty just print the laser at the spot
-				{
-					setCursorPos(posX, posY);
-					std::wcout << this->beam1;
-
-				}
-
-			break;
-		case 2:
-
-			break;
-
-		case 3:
-
-			break;
-
-		case 4:
-
-			break;
+		if (this->dir % 2 == 0) {
+			newX += this->dir == 2 ? -1 : 1;
+		}
+		else {
+			newY += this->dir == 1 ? -1 : 1;
 		}
 
-	
+		if (newX < 0 || newX > 9 || newY < 0 || newY > 7) {
+			inBounds = false;
+			continue;
+		}
+
+		if (nextOccupied(board[newY][newX])) {
+			deflected(this->dir, pieceList[board[newY][newX] - 1]);
+			if (pieceList[board[newY][newX] - 1].destroyed) {
+				board[newY][newX] = 0;
+				isFiring = false;
+			}
+			else if (pieceList[board[newY][newX] - 1].isAnubis ||
+					 pieceList[board[newY][newX] - 1].isSphinx)
+				isFiring = false;
+		}
+
+		setCursorPos(newX * 8 + 4, newY * 4 + 3);
+		std::wcout << L"-";
+
+	}
 }
 
