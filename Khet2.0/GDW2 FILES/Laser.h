@@ -8,7 +8,7 @@ class Laser
 {
 public:
 
-	void fireLaser(Piece,int[8][10],std::vector<Piece>);
+	void fireLaser(Piece,int[8][10],std::vector<Piece>&);
 	bool nextOccupied(int);
 	void deflected(int&,Piece&);
 
