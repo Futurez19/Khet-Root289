@@ -1,11 +1,9 @@
 ﻿
-
 	Objective:
 	
 The objective of Khet is to eliminate the opponent’s pharaoh with your sphinx’s laser.
 The players must guide the lasers through the board by reflecting off of certain pieces.
 It is also possible to lose if you hit your own pharaoh.
-
 
 	How to interact with the console to play the game:
 	
@@ -16,24 +14,26 @@ Select the piece you would like to move with your mouse.
 
 	Pieces:
 
-Pharaoh 
-This is the most important piece for each side.
-Similar to the king in chess, if this piece is hit with a laser the owner of that piece has lost the game.
+Pharaoh 															/ - \
+This is the most important piece for each side.											- + -
+Similar to the king in chess, if this piece is hit with a laser the owner of that piece has lost the game.			\ - /
 
-Scarab 
-Scarabs reflect lasers coming from any direction, thus cannot be eliminated from the game.
+Scarab 																\ · ·
+Scarabs reflect lasers coming from any direction, thus cannot be eliminated from the game.					· \ ·
+																· · \
 
-Anubis
-These are only affected by the laser from the sides or the rear, it will not be harmed from the front.
+Anubis																Φ Φ Φ
+These are only affected by the laser from the sides or the rear, it will not be harmed from the front.				■ ■ ■
+																■ ■ ■
 
-Pyramid 
-These pieces have one diagonal mirror able to make paths with the laser.
-They are vulnerable from two of the four sides.
+Pyramid 															\ · ·
+These pieces have one diagonal mirror able to make paths with the laser.							\ \ ·
+They are vulnerable from two of the four sides.											\ \ \
 
 Sphinx
-The sphinx does not move, but they can rotate.
-Both of these pieces are placed in the players’ bottom right hand corner.
-They are the only pieces that can fire a laser.
+The sphinx does not move, but they can rotate.											• A •
+Both of these pieces are placed in the players’ bottom right hand corner.							▓ Ω ▓
+They are the only pieces that can fire a laser.											▓ ▓ ▓
 They are not affected by laser fire.
 
 
