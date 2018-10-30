@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include "InputManager.h"
 
 //int deflect(laser,piece);
 
@@ -18,6 +20,8 @@ public:
 	//Piece interactions.
 	void rotateCCW();
 	void rotateCW();
+
+	//int *move(int,std::vector<Piece>&,unsigned char);
 
 	void loadPieceData(std::string);
 

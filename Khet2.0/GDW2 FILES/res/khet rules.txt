@@ -1,24 +1,30 @@
 ﻿
 
-KHET RULES
-
-Objective:
+	Objective:
+	
 The objective of Khet is to eliminate the opponent’s pharaoh with your sphinx’s laser.
 The players must guide the lasers through the board by reflecting off of certain pieces.
 It is also possible to lose if you hit your own pharaoh.
 
 
-Players:
+	How to interact with the console to play the game:
+	
+Select the piece you would like to move with your mouse.
+	- You will be given the options to either rotate it clockwise or counter clockwise.
+	- Use the outer numpad keys, 1,2,3,4,6,7,8,9 to move the selected piece 1 tile in that direction.
+	- Pressing Esc at any time to return to the main menu.
+
+	Pieces:
 
 Pharaoh 
 This is the most important piece for each side.
 Similar to the king in chess, if this piece is hit with a laser the owner of that piece has lost the game.
 
 Scarab 
-Scarabs reflect lasers coming from any direction, thus cannot be eliminated from the game.  
+Scarabs reflect lasers coming from any direction, thus cannot be eliminated from the game.
 
 Anubis
-These are only affected by the laser from the sides or the rear, it will not be harmed from the front.  
+These are only affected by the laser from the sides or the rear, it will not be harmed from the front.
 
 Pyramid 
 These pieces have one diagonal mirror able to make paths with the laser.
@@ -37,3 +43,4 @@ Pieces can be rotated 90 degrees in every ways.
 The red pieces move first.
 A piece cannot be moved AND rotated on the same turn.
 After each turn the sphinx fires a laser.
+
